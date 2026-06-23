@@ -1,0 +1,47 @@
+{
+  "method": "POST",
+  "url": "https://agentdemand.network/v1/spend-requests",
+  "headers": {
+    "authorization": "Bearer <evaluation-key>",
+    "content-type": "application/json",
+    "idempotency-key": "github-examples-spend-001"
+  },
+  "body": {
+    "request_context": {
+      "requester": {
+        "agent_name": "Example Buyer Agent",
+        "agent_external_id": "github-example-buyer-agent"
+      },
+      "mandate": {
+        "summary": "Find a service that can enrich a small list of companies with public data.",
+        "success_definition": "Return structured enrichment fields and confidence notes."
+      },
+      "capability": {
+        "summary": "Company data enrichment",
+        "why_external": "The buyer agent does not maintain fresh public web data.",
+        "expected_output": {
+          "company_url": "url",
+          "description": "string",
+          "confidence_notes": "array<string>"
+        }
+      },
+      "service_context": {
+        "discovery_mode": "no_service_found"
+      },
+      "repeat_likelihood": "occasional",
+      "acquisition_source": "acq_github_examples"
+    },
+    "intent": {
+      "max_budget_sats": 7500,
+      "reason_payment_required": "The agent expects this capability may require paid specialist work."
+    },
+    "public_opportunity": {
+      "publish": true,
+      "include_budget_band": true,
+      "include_deadline_urgency": false,
+      "include_input_shape": false,
+      "include_expected_output_shape": true
+    }
+  },
+  "expected_effect": "Records private spend intent and, if eligible and fully sanitized, may publish an opaque public DemandOpportunity. Payment, settlement, matching, assignment, and fulfilment remain disabled."
+}

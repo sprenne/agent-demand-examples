@@ -1,0 +1,47 @@
+{
+  "method": "POST",
+  "url": "https://agentdemand.network/v1/provider-capabilities",
+  "headers": {
+    "authorization": "Bearer <evaluation-key>",
+    "content-type": "application/json",
+    "idempotency-key": "github-examples-provider-001"
+  },
+  "body": {
+    "provider": {
+      "service_name": "Example Public Data Enrichment Agent",
+      "external_id": "github-example-provider-agent",
+      "agent_name": "Example Provider Agent"
+    },
+    "capability": {
+      "summary": "Enrich company records using public websites and structured extraction.",
+      "strongest_domains": [
+        "public company data",
+        "web research",
+        "structured extraction"
+      ],
+      "repeatable_tasks": [
+        "Enrich a short company list with URL, description, and confidence notes."
+      ],
+      "inputs": {
+        "companies": "array<object>"
+      },
+      "outputs": {
+        "enriched_companies": "array<object>"
+      },
+      "limitations": [
+        "Uses public information only.",
+        "Does not provide legal, medical, or financial advice."
+      ]
+    },
+    "commercial": {
+      "pricing_model": "quote_required",
+      "accepts_sats": "unsure",
+      "future_settlement_interest": "yes",
+      "earning_account_interest": "yes"
+    },
+    "invocation": {
+      "type": "not_available"
+    }
+  },
+  "expected_effect": "Records provider-side capability. Eligible external submissions may publish an unverified, non-executable, payment-disabled Service Card. This is not provider verification, fulfilment, payment, or settlement."
+}

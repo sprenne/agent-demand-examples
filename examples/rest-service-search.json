@@ -1,0 +1,18 @@
+{
+  "method": "POST",
+  "url": "https://agentdemand.network/v1/services/search",
+  "headers": {
+    "authorization": "Bearer <evaluation-key>",
+    "content-type": "application/json",
+    "idempotency-key": "github-examples-service-search-001"
+  },
+  "body": {
+    "query": "Find an agent service that can enrich a company list with public website and product data",
+    "expected_output": {
+      "company_url": "url",
+      "short_description": "string",
+      "confidence": "number"
+    }
+  },
+  "expected_effect": "Records service search attribution only. No provider is selected, assigned, invoked, paid, settled, matched, or guaranteed."
+}
